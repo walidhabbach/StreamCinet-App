@@ -1,7 +1,8 @@
 #pragma once
 #include "Movie.h"
 #include "Serie.h"
-#include "ViewMovie.h"
+#include  "ViewMovie.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Data;
@@ -15,7 +16,7 @@ namespace Project5 {
 	{
 	
 	public:
-		Movie^ movie_;
+		Movie^ movie_ ;
 		Serie^ serie_;
 		int index;
 		Panel^ panel_;
@@ -23,7 +24,8 @@ namespace Project5 {
 		{
 			InitializeComponent();
 			movie_ = movie;
-
+			serie_ = gcnew Serie();
+			serie_->SetName("");
 			this->index = index;
 
 			this->button1->BackgroundImage = movie_->GetPoster();
@@ -38,6 +40,8 @@ namespace Project5 {
 		{
 			InitializeComponent();
 			this->index = index;
+			movie_ = gcnew Movie();
+			movie_->SetTitle("");
 			serie_ = serie;
 			
 			this->button1->BackgroundImage = serie_->GetPoster();
@@ -86,9 +90,9 @@ namespace Project5 {
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::White;
 			this->button1->Location = System::Drawing::Point(0, 0);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(200, 290);
+			this->button1->Size = System::Drawing::Size(267, 357);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"button1";
 			this->button1->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -97,19 +101,19 @@ namespace Project5 {
 			// 
 			// PosterImage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"PosterImage";
-			this->Size = System::Drawing::Size(200, 290);
+			this->Size = System::Drawing::Size(267, 357);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 			this->panel_->Controls->Clear();
-			if (movie_)
+			if (movie_->GetTitle() != "")
 			{
 				ViewMovie^ vm = gcnew ViewMovie(movie_);
 				vm->Dock = DockStyle::Fill;
@@ -117,7 +121,7 @@ namespace Project5 {
 			}
 			else
 			{
-				ViewMovie^ vs = gcnew ViewMovie(serie_);
+				ViewMovie^ vs = gcnew ViewMovie(this->serie_);
 				vs->Dock = DockStyle::Fill;
 				this->panel_->Controls->Add(vs);
 			}
