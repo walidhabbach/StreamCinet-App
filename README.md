@@ -1,6 +1,6 @@
 # StreamCinet-App
 
-StreamCinet is a Desktop Application , it shows you information about movies, tv shows and it allows you to organize and planning to watch the list of your favorite movies or series .
+StreamCinet is a Desktop Application , it shows you information about movies, tv shows and it allows you to organize and planning to watch the list of your favorite movies and series .
 
 
  
