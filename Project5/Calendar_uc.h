@@ -332,7 +332,7 @@ namespace Project5 {
 	}
 	private: void retrieveDataMovies()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "SELECT *FROM MOVIE ;";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -373,7 +373,7 @@ namespace Project5 {
 	private: void retrieveTvShows()
 	{
 		String^ Query2 = "SELECT *FROM SERIE ;";
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		conx.Open();
 		int index = 0;
 		SqlCommand Cmd2(Query2, % conx);

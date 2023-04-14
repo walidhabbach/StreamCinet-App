@@ -128,7 +128,7 @@ namespace Project5 {
 		}
 	private: bool checkDataMovie()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "select * from planning_movie where id_movie = " + movie_->GetIdMovie() + "and" + " id = " + idPlanning;
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -137,7 +137,7 @@ namespace Project5 {
 	}
 	private: bool checkDataSerie()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "select * from planning_serie where id_serie = " + serie_->GetIdSerie() + "and" + " id = " + idPlanning;
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -146,7 +146,7 @@ namespace Project5 {
 	}
 	private: void loadDataMovies()
 	{
-			SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+			SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 			String^ Query = "select MOVIE.ID_MOVIE,ID_API,TITLE,OVERVIEW,RELEASE_DATE,RATING,POSTER,BACKDROP from MOVIE join PLANNING_MOVIE on MOVIE.ID_MOVIE = PLANNING_MOVIE.ID_MOVIE join PLANNING on PLANNING_MOVIE.ID = PLANNING.ID where PLANNING.date = '" + this->day + "-" + this->month + "-" + this->year + "'";
 			SqlCommand Cmd(Query, % conx);
 			conx.Open();
@@ -180,7 +180,7 @@ namespace Project5 {
 	}
 	private: int getIdPlanning()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "SELECT ID from PLANNING WHERE DATE =  '" + this->day + "-" + this->month + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -190,7 +190,7 @@ namespace Project5 {
 	}
 	private: void loadDataSeries()
 	{
-			SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+			SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 			String^ Query = "select SERIE.ID_SERIE,ID_API,TITLE,OVERVIEW,RELEASE_DATE,RATING,POSTER,BACKDROP from SERIE join PLANNING_SERIE on SERIE.ID_SERIE = PLANNING_SERIE.ID_SERIE join PLANNING on PLANNING_SERIE.ID = PLANNING.ID where PLANNING.date = '" + this->day + "-" + this->month + "-" + this->year + "'";
 			SqlCommand Cmd(Query, % conx);
 			conx.Open();
@@ -224,7 +224,7 @@ namespace Project5 {
 #pragma endregion
 	private: void addDataBaseMovie()
 	{
-			SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+			SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 			String^ Query = "insert into planning_movie(ID,ID_MOVIE) values(" + idPlanning + "," + movie_->GetIdMovie() + ")";
 			SqlCommand Cmd(Query, % conx);
 			conx.Open();
@@ -232,7 +232,7 @@ namespace Project5 {
 	}
 	private: void addDataBaseSerie()
 	{
-			SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+			SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 			String^ Query = "insert into planning_serie(ID,ID_serie) values(" + idPlanning + "," + serie_->GetIdSerie() + ")";
 			SqlCommand Cmd(Query, % conx);
 			conx.Open();

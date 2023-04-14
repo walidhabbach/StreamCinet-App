@@ -118,7 +118,7 @@ namespace Project5 {
 	{
 		MessageBox::Show("id of planning is : " + this->idPlanning + " and id_movie is : " + this->movie_->GetIdMovie());
 		String^ Query2 = "DELETE FROM planning_movie WHERE id = " + this->idPlanning + " " + "and ID_MOVIE = " + this->movie_->GetIdMovie();
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		conx.Open();
 		int index = 0;
 		SqlCommand Cmd2(Query2, % conx);
@@ -127,7 +127,7 @@ namespace Project5 {
 	private: void deletePlanningSerie()
 	{
 		String^ Query2 = "DELETE FROM planning_serie WHERE id = " + this->idPlanning + " " + "and ID_SERIE = " + this->serie_->GetIdSerie();
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		conx.Open();
 		int index = 0;
 		SqlCommand Cmd2(Query2, % conx);

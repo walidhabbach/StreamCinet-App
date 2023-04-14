@@ -124,7 +124,7 @@ namespace Project5 {
 		}
 	private: int getIdPlanning()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "SELECT ID from PLANNING WHERE DATE =  '" + this->dayOfweek + "-" + this->mo + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -134,7 +134,7 @@ namespace Project5 {
 	}
 	private: void loadDataMovies()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "select MOVIE.ID_MOVIE,ID_API,TITLE,OVERVIEW,RELEASE_DATE,RATING,POSTER,BACKDROP from MOVIE join PLANNING_MOVIE on MOVIE.ID_MOVIE = PLANNING_MOVIE.ID_MOVIE join PLANNING on PLANNING_MOVIE.ID = PLANNING.ID where PLANNING.date = '" + this->dayOfweek + "-" + this->mo + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -169,7 +169,7 @@ namespace Project5 {
 	
 	private: void loadDataSeries()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "select SERIE.ID_SERIE,ID_API,TITLE,OVERVIEW,RELEASE_DATE,RATING,POSTER,BACKDROP from SERIE join PLANNING_SERIE on SERIE.ID_SERIE = PLANNING_SERIE.ID_SERIE join PLANNING on PLANNING_SERIE.ID = PLANNING.ID where PLANNING.date = '" + this->dayOfweek + "-" + this->mo + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -206,7 +206,7 @@ namespace Project5 {
 	}
 	private: bool checkValidityDate()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "SELECT * from PLANNING where date = '" + this->dayOfweek + "-" + this->mo + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -215,7 +215,7 @@ namespace Project5 {
 	}
 	private: int getLastDateInserted()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "select id from planning where date = '" + this->dayOfweek + "-" + this->mo + "-" + this->year + "'";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
@@ -226,7 +226,7 @@ namespace Project5 {
 	}
 	private: void insertDate()
 	{
-		SqlConnection conx("Data Source = .\\YASKA; Initial Catalog = DataBase_StreamCinet; Integrated Security = True");
+		SqlConnection conx("Data Source=HB\\SQLEXPRESS;Initial Catalog=DataBase_StreamCinet;Integrated Security=True");
 		String^ Query = "insert into planning(date) values('" + this->dayOfweek + "-" + this->mo + "-" + this->year + "')";
 		SqlCommand Cmd(Query, % conx);
 		conx.Open();
